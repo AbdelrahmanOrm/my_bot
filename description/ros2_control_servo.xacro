@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+
+    <ros2_control name="my_servo_motor" type="actuator">
+        <hardware>
+            <class>simple_servo_motor_pkg/SimpleServoMotor</class>
+            <param name="serial_port">/dev/tty0</param>
+
+        </hardware>
+        <joint name="leftiii_wheel_joint">
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+
+            <state_interface name="position"/>
+
+        </joint>
+        <joint name="rightiii_wheel_joint">
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+
+            <state_interface name="position"/>
+
+        </joint>
+
+    </ros2_control>
+
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <parameters>$(find my_bot)/config/my_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+
+</robot>

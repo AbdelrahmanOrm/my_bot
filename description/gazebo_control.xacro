@@ -2,15 +2,22 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <gazebo>
+        <!-- Wheel information -->
         <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+        <num_wheel_pairs>2</num_wheel_pairs>
         <left_joint>left_wheel_joint</left_joint>
         <right_joint>right_wheel_joint</right_joint>
-        <wheel_separation>0.34</wheel_separation>
+        <left_joint>leftiii_wheel_joint</left_joint>
+        <right_joint>rightiii_wheel_joint</right_joint>
+        
+        <wheel_separation>0.242</wheel_separation>
         <wheel_diameter>0.1</wheel_diameter>
 
+        <!-- Limits -->
         <max_wheel_torque>200</max_wheel_torque>
         <max_wheel_acceleration>10.0</max_wheel_acceleration>
 
+        <!-- Output -->
         <odometry_frame>odom</odometry_frame>
         <robot_base_frame>base_link</robot_base_frame>
 

@@ -32,28 +32,30 @@
     <link name="base_footprint">
     </link>
     
+    <!-- CHASSIS LINK -->
     <joint name = "chassis_joint" type = "fixed">
         <parent link = "base_link" />
         <child link = "chassis" />
-        <origin xyz = "-0.1 0 0" />
+        <origin xyz = "0 0 0" />         <!-- "-0.1 0 0" -->
     </joint>
+
     <link name="chassis" >
         <visual>
-            <origin xyz = "0.15 0 0.075" />
+            <origin xyz = "0.2 0 0.1" />
             <geometry>
-                <box size="0.3 0.3 0.15" />
+                <box size="0.4 0.2 0.2" />
             </geometry>
             <material name = "white" />
 
         </visual>
         <collision>
-            <origin xyz = "0.15 0 0.075" />
+            <origin xyz = "0.2 0 0.1" />
             <geometry>
-                <box size="0.3 0.3 0.15" />
+                <box size="0.4 0.2 0.2" />
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.5" x="0.3" y="0.3" z="0.15">
-            <origin xyz = "0.15 0 0.075" rpy = "0 0 0"/>
+        <xacro:inertial_box mass="2" x="0.4" y="0.2" z="0.2">
+            <origin xyz = "0.2 0 0.1" rpy = "0 0 0"/>
         </xacro:inertial_box>
     </link>
 
@@ -61,11 +63,11 @@
         <material>Gazebo/White</material>
     </gazebo>
 
-
+    <!--LEFT WHEEL JOINT-->
     <joint name = "left_wheel_joint" type = "continuous">
         <parent link = "base_link" />
         <child link = "left_wheel" />
-        <origin xyz = "0 0.17 0" rpy = "-${pi/2} 0 0" />
+        <origin xyz = "0.05 0.121 0" rpy = "-${pi/2} 0 0" />
         <axis xyz = "0 0 1" />
     </joint>
 
@@ -98,7 +100,7 @@
     <joint name = "leftiii_wheel_joint" type = "continuous">
         <parent link = "base_link" />
         <child link = "leftiii_wheel" />
-        <origin xyz = "0.1 0.17 0" rpy = "-${pi/2} 0 0" />
+        <origin xyz = "0.35 0.121 0" rpy = "-${pi/2} 0 0" />
         <axis xyz = "0 0 1" />
     </joint>
     
@@ -107,7 +109,7 @@
             <geometry>
                 <cylinder radius = "0.05" length = "0.04"/>
             </geometry>
-            <material name = "blue" />
+            <material name = "green" />
 
         </visual>
         <collision>
@@ -123,16 +125,16 @@
     </link>
 
     <gazebo reference="leftiii_wheel">
-        <material>Gazebo/Blue</material>
+        <material>Gazebo/Green</material>
     </gazebo>
 
 
-
+    <!--RIGHT WHEELS-->
 
     <joint name = "right_wheel_joint" type = "continuous">
         <parent link = "base_link" />
         <child link = "right_wheel" />
-        <origin xyz = "0 -0.17 0" rpy = "${pi/2} 0 0" />
+        <origin xyz = "0.05 -0.121 0" rpy = "${pi/2} 0 0" />
         <axis xyz = "0 0 -1" />
     </joint>
     
@@ -170,7 +172,7 @@
     <joint name = "rightiii_wheel_joint" type = "continuous">
         <parent link = "base_link" />
         <child link = "rightiii_wheel" />
-        <origin xyz = "0.1 -0.17 0" rpy = "${pi/2} 0 0" />
+        <origin xyz = "0.35 -0.121 0" rpy = "${pi/2} 0 0" />
         <axis xyz = "0 0 -1" />
     </joint>
     
@@ -181,7 +183,7 @@
             <geometry>
                 <cylinder radius = "0.05" length = "0.04"/>
             </geometry>
-            <material name = "blue" />
+            <material name = "green" />
 
         </visual>
         <collision>
@@ -197,14 +199,14 @@
     </link>
 
     <gazebo reference="rightiii_wheel">
-        <material>Gazebo/Blue</material>
+        <material>Gazebo/Green</material>
     </gazebo>
 
 
 
 
     
-    <joint name = "caster_wheel_joint" type = "fixed">
+    <!-- <joint name = "caster_wheel_joint" type = "fixed">
         <parent link = "chassis" />
         <child link = "caster_wheel" />
         <origin xyz = "0.24 0 0" />
@@ -236,8 +238,7 @@
         <mu2 value = "0.001"/>
 
 
-    </gazebo>
-    
+    </gazebo> -->
 
 
 </robot>
