@@ -40,12 +40,12 @@
     <joint name = "chassis_joint" type = "fixed">
         <parent link = "base_link" />
         <child link = "chassis" />
-        <origin xyz = "0 0 0" />         <!-- "-0.1 0 0" -->
+        <origin xyz = "-0.05 0 0.075" />         <!-- "0 0 0" -->
     </joint>
 
     <link name="chassis" >
         <visual>
-            <origin xyz = "0.2 0 0.075" />
+            <origin xyz = "0.2 0 0" />        <!--"0.2 0 0.075"-->
             <geometry>
                 <box size="0.4 0.2 0.15" />
             </geometry>
@@ -67,140 +67,215 @@
         <material>Gazebo/White</material>
     </gazebo>
 
-    <!--LEFT WHEEL JOINT-->
-    <joint name = "left_wheel_joint" type = "continuous">
-        <parent link = "base_link" />
-        <child link = "left_wheel" />
-        <origin xyz = "0.05 0.121 0" rpy = "-${pi/2} 0 0" />
-        <axis xyz = "0 0 1" />
-    </joint>
+    <!-- front_left-->
+    <link name="leftiii_wheel" >
+        <visual> 
+            <origin xyz="0 0 0" rpy="-${pi/2} 0 0" />
+            <geometry>
+                <cylinder radius = "0.033" length = "0.026"/>
+            </geometry>
+            <material name = "green" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius = "0.033" length = "0.026"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
+            <origin xyz = "0 0 0" rpy = "0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
 
+
+    <link name="art_w_left">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <mass value="1" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+    </link>
+
+
+    <!-- front_right-->
+    <link name="rightiii_wheel" >
+        <visual>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+            <geometry>
+                <cylinder radius = "0.033" length = "0.026"/>
+            </geometry>
+            <material name = "green" />
+        </visual>
+        <collision>    
+            <geometry>
+                <cylinder radius = "0.033" length = "0.026"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
+            <origin xyz = "0 0 0" rpy = "0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+
+
+    <link name="art_w_right">
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <mass value="1" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+    </link>
+
+    <!-- rear_left -->
     <link name="left_wheel" >
         <visual> 
             <geometry>
                 <cylinder radius = "0.033" length = "0.026"/>
             </geometry>
             <material name = "blue" />
-
         </visual>
         <collision>
-            
             <geometry>
                 <cylinder radius = "0.033" length = "0.026"/>
             </geometry>
-
         </collision>
         <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
 
-    <gazebo reference="left_wheel">
-        <material>Gazebo/Blue</material>
-    </gazebo>
 
 
-
-    <joint name = "leftiii_wheel_joint" type = "continuous">
-        <parent link = "base_link" />
-        <child link = "leftiii_wheel" />
-        <origin xyz = "0.35 0.121 0" rpy = "-${pi/2} 0 0" />
-        <axis xyz = "0 0 1" />
-    </joint>
-    
-    <link name="leftiii_wheel" >
-        <visual> 
-            <geometry>
-                <cylinder radius = "0.033" length = "0.026"/>
-            </geometry>
-            <material name = "green" />
-
-        </visual>
-        <collision>
-            
-            <geometry>
-                <cylinder radius = "0.033" length = "0.026"/>
-            </geometry>
-
-        </collision>
-        <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
-            <origin xyz = "0 0 0" rpy = "0 0 0"/>
-        </xacro:inertial_cylinder>
-    </link>
-
-    <gazebo reference="leftiii_wheel">
-        <material>Gazebo/Green</material>
-    </gazebo>
-
-
-    <!--RIGHT WHEELS-->
-
-    <joint name = "right_wheel_joint" type = "continuous">
-        <parent link = "base_link" />
-        <child link = "right_wheel" />
-        <origin xyz = "0.05 -0.121 0" rpy = "${pi/2} 0 0" />
-        <axis xyz = "0 0 -1" />
-    </joint>
-    
-    
+    <!-- rear_right -->
     <link name="right_wheel" >
-        <visual>
-            
+        <visual>        
             <geometry>
                 <cylinder radius = "0.033" length = "0.026"/>
             </geometry>
             <material name = "blue" />
-
         </visual>
         <collision>
-            
             <geometry>
                 <cylinder radius = "0.033" length = "0.026"/>
             </geometry>
-
         </collision>
         <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
 
-    <gazebo reference="right_wheel">
-        <material>Gazebo/Blue</material>
-    </gazebo>
 
 
+   
 
-    <joint name = "rightiii_wheel_joint" type = "continuous">
-        <parent link = "base_link" />
-        <child link = "rightiii_wheel" />
-        <origin xyz = "0.35 -0.121 0" rpy = "${pi/2} 0 0" />
-        <axis xyz = "0 0 -1" />
+<!-- //////////////////////////////// ACKERMANN STEERING JOINTS //////////////////////////////////// -->   
+
+    
+
+
+    <joint name="art_wheel_left" type="continuous">
+        <parent link="art_w_left"/>
+        <child link="leftiii_wheel"/>
+        <origin xyz="0.05 0 0" rpy="0 0 0" />  <!-- "0.05 0 0" -->
+        <axis xyz= "0 1 0" />             <!-- rotates around y-axis -->
+        <dynamics damping="0.05" friction="0.01"/>
     </joint>
-    
-    
-    <link name="rightiii_wheel" >
-        <visual>
-            
-            <geometry>
-                <cylinder radius = "0.033" length = "0.026"/>
-            </geometry>
-            <material name = "green" />
+  
+    <joint name="art_wheel_right" type="continuous">
+        <parent link="art_w_right"/>
+        <child link="rightiii_wheel"/>
+        <origin xyz="0.05 0 0" rpy="0 0 0" />   <!--${pi/2}-->
+        <axis xyz= "0 1 0"/>
+        <dynamics damping="0.05" friction="0.01"/>
+    </joint>
 
-        </visual>
-        <collision>
-            
-            <geometry>
-                <cylinder radius = "0.033" length = "0.026"/>
-            </geometry>
+    <joint name="base_art_w_left" type="revolute">
+        <parent link="base_link"/>
+        <child link="art_w_left"/>
+        <origin xyz="0.25 0.121 0" rpy = "0 0 0" />
+        <limit upper="0.5236" lower="-0.5236" velocity="20" effort="10"/>
+        <axis xyz= "0 0 1" />             <!-- revolutes around z-axis -->
+        <dynamics damping="0.05" friction="0.2"/>
+    </joint>   
 
-        </collision>
-        <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
-            <origin xyz = "0 0 0" rpy = "0 0 0"/>
-        </xacro:inertial_cylinder>
-    </link>
+    <joint name="base_art_w_right" type="revolute">
+        <parent link="base_link"/>
+        <child link="art_w_right"/>
+        <origin xyz="0.25 -0.121 0" rpy = "0 0 0" />
+        <limit upper="0.5236" lower="-0.5236" velocity="20" effort="10"/>
+        <axis xyz= "0 0 1" />
+        <dynamics damping="0.05" friction="0.2"/>
+    </joint>
+
+    
+
+<!-- ////////////////////////////////////// JOINTS ///////////////////////////////////////////////// --> 
+    
+    <joint name="left_wheel_3" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz = "0 0.121 0.0" rpy = "-${pi/2} 0 0" />  <!-- "0.05 0.121 0" -->
+        <axis xyz = "0 0 1" />
+        <dynamics damping="0.05" friction="0.01"/>
+    </joint>
+
+    <joint name="right_wheel_4" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz = "0 -0.121 0.0" rpy = "${pi/2} 0 0" />
+        <axis xyz = "0 0 -1" />
+        <dynamics damping="0.05" friction="0.01"/>
+    </joint>
+
+<!-- ////////////////////////////////////// GAZEBO ///////////////////////////////////////////////// --> 
+
+    <gazebo reference="leftiii_wheel">
+        <material>Gazebo/Green</material>
+        <mu1>1</mu1>
+        <mu2>1</mu2>
+        <kp>1000000</kp>
+        <kd>0.1</kd>
+        <selfCollide>true</selfCollide>
+    </gazebo>
 
     <gazebo reference="rightiii_wheel">
         <material>Gazebo/Green</material>
+        <mu1>1</mu1>
+        <mu2>1</mu2>
+        <kp>1000000</kp>
+        <kd>0.1</kd>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="left_wheel">
+        <material>Gazebo/Blue</material>
+        <mu1>1</mu1>
+        <mu2>1</mu2>
+        <kp>1000000</kp>
+        <kd>0.1</kd>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="right_wheel">
+        <material>Gazebo/Blue</material>
+        <mu1>1</mu1>
+        <mu2>1</mu2>
+        <kp>1000000</kp>
+        <kd>0.1</kd>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="art_w_left">
+      <material>Gazebo/Green</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="art_w_right">
+      <material>Gazebo/Green</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <selfCollide>true</selfCollide>
     </gazebo>
 
 </robot>

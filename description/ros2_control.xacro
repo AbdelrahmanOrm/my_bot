@@ -1,10 +1,57 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
- 
     <ros2_control name="GazeboSystem" type="system">
         <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+        <joint name="left_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="position"/>
+        </joint>
+        <joint name="right_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="position"/>
+        </joint>
+        <joint name="left_steer_joint">
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="right_steer_joint">
+            <command_interface name="position">
+                <param name="min">-1.57</param>
+                <param name="max">1.57</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <parameters>$(find my_bot)/config/my_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+
+</robot>
+
+    <!-- <plugin name="gazebo_ros_ackermann_drive" filename="libgazebo_ros_ackermann_drive.so"> </plugin> -->
+    <!-- <ros2_control name="ackermann_ros2_control" type="system">
+        <hardware>
+            <plugin>ackermann_steering_controller/AckermannSteeringController</plugin>
         </hardware>
         <joint name="left_wheel_joint">
             <command_interface name="velocity">
@@ -27,6 +74,7 @@
                 <param name="min">-1.57</param>
                 <param name="max">1.57</param>
             </command_interface>
+            <state_interface name="velocity"/>
             <state_interface name="position"/>
         </joint>
         <joint name="rightiii_wheel_joint">
@@ -34,16 +82,8 @@
                 <param name="min">-1.57</param>
                 <param name="max">1.57</param>
             </command_interface>
+            <state_interface name="velocity"/>
             <state_interface name="position"/>
         </joint>
-    </ros2_control>
+    </ros2_control> -->
 
-
-    <gazebo>
-        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-            <parameters>$(find my_bot)/config/my_controllers.yaml</parameters>
-        </plugin>
-    </gazebo>
-
-
-</robot>

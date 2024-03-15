@@ -19,7 +19,16 @@ endif()
 find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclpy REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(gazebo_ros REQUIRED)
+find_package(gazebo_dev REQUIRED)
+find_package(gazebo_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(ackermann_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)  # Add sensor_msgs dependency
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -33,8 +42,12 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY config description launch worlds
-  DESTINATION share/${PROJECT_NAME}
-)
+  DIRECTORY config description launch scripts worlds
+  DESTINATION share/${PROJECT_NAME})
+  
+# install(
+#   PROGRAMS         # FILES
+#   scripts/ackermann.py
+#   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

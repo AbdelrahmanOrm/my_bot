@@ -1,0 +1,7 @@
+# my_bot_teleop_keyboard_node:
+#   ros__parameters:
+#     velocity_increase_rate: 0.1
+#     steering_increase_rate: 0.1
+#     max_velocity: 10.0
+#     max_steering_angle: 0.5
+#     drive_topic: '/cmd_vel'
