@@ -40,26 +40,26 @@
     <joint name = "chassis_joint" type = "fixed">
         <parent link = "base_link" />
         <child link = "chassis" />
-        <origin xyz = "-0.05 0 0.075" />         <!-- "0 0 0" -->
+        <origin xyz = "0 0 0.05" />         <!-- "-0.05 0 0.075" --> <!-- "0 0 0.075" -->
     </joint>
 
     <link name="chassis" >
         <visual>
-            <origin xyz = "0.2 0 0" />        <!--"0.2 0 0.075"-->
+            <origin xyz = "0 0 0" />        <!--"0.2 0 0"-->
             <geometry>
-                <box size="0.4 0.2 0.15" />
+                <box size="0.4 0.2 0.1" />
             </geometry>
             <material name = "white" />
 
         </visual>
         <collision>
-            <origin xyz = "0.2 0 0.075" />
+            <origin xyz = "0 0 0" />      <!--"0.2 0 0"-->
             <geometry>
-                <box size="0.4 0.2 0.15" />
+                <box size="0.4 0.2 0.1" />
             </geometry>
         </collision>
-        <xacro:inertial_box mass="1.85" x="0.4" y="0.2" z="0.15">
-            <origin xyz = "0.2 0 0.075" rpy = "0 0 0"/>
+        <xacro:inertial_box mass="1.85" x="0.4" y="0.2" z="0.1">
+            <origin xyz = "0 0 0" rpy = "0 0 0"/>          <!--xyz = "0.2 0 0.075"-->
         </xacro:inertial_box>
     </link>
 
@@ -77,6 +77,7 @@
             <material name = "green" />
         </visual>
         <collision>
+            <origin xyz="0 0 0" rpy="-${pi/2} 0 0" />
             <geometry>
                 <cylinder radius = "0.033" length = "0.026"/>
             </geometry>
@@ -105,7 +106,8 @@
             </geometry>
             <material name = "green" />
         </visual>
-        <collision>    
+        <collision>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 0" />    
             <geometry>
                 <cylinder radius = "0.033" length = "0.026"/>
             </geometry>
@@ -175,7 +177,7 @@
     <joint name="art_wheel_left" type="continuous">
         <parent link="art_w_left"/>
         <child link="leftiii_wheel"/>
-        <origin xyz="0.05 0 0" rpy="0 0 0" />  <!-- "0.05 0 0" -->
+        <origin xyz="0 0.05 0" rpy="0 0 0" />  <!-- "0.05 0 0" -->
         <axis xyz= "0 1 0" />             <!-- rotates around y-axis -->
         <dynamics damping="0.05" friction="0.01"/>
     </joint>
@@ -183,7 +185,7 @@
     <joint name="art_wheel_right" type="continuous">
         <parent link="art_w_right"/>
         <child link="rightiii_wheel"/>
-        <origin xyz="0.05 0 0" rpy="0 0 0" />   <!--${pi/2}-->
+        <origin xyz="0 -0.05 0" rpy="0 0 0" />   <!--${pi/2}-->
         <axis xyz= "0 1 0"/>
         <dynamics damping="0.05" friction="0.01"/>
     </joint>
@@ -191,7 +193,7 @@
     <joint name="base_art_w_left" type="revolute">
         <parent link="base_link"/>
         <child link="art_w_left"/>
-        <origin xyz="0.25 0.121 0" rpy = "0 0 0" />
+        <origin xyz="0.15 0.071 0" rpy = "0 0 0" />
         <limit upper="0.5236" lower="-0.5236" velocity="20" effort="10"/>
         <axis xyz= "0 0 1" />             <!-- revolutes around z-axis -->
         <dynamics damping="0.05" friction="0.2"/>
@@ -200,7 +202,7 @@
     <joint name="base_art_w_right" type="revolute">
         <parent link="base_link"/>
         <child link="art_w_right"/>
-        <origin xyz="0.25 -0.121 0" rpy = "0 0 0" />
+        <origin xyz="0.15 -0.071 0" rpy = "0 0 0" />   <!-- "0.1 -0.121 0" -->
         <limit upper="0.5236" lower="-0.5236" velocity="20" effort="10"/>
         <axis xyz= "0 0 1" />
         <dynamics damping="0.05" friction="0.2"/>
@@ -213,7 +215,7 @@
     <joint name="left_wheel_3" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
-        <origin xyz = "0 0.121 0.0" rpy = "-${pi/2} 0 0" />  <!-- "0.05 0.121 0" -->
+        <origin xyz = "-0.15 0.118 0.0" rpy = "-${pi/2} 0 0" />  <!-- "0.05 0.121 0" -->
         <axis xyz = "0 0 1" />
         <dynamics damping="0.05" friction="0.01"/>
     </joint>
@@ -221,7 +223,7 @@
     <joint name="right_wheel_4" type="continuous">
         <parent link="base_link"/>
         <child link="right_wheel"/>
-        <origin xyz = "0 -0.121 0.0" rpy = "${pi/2} 0 0" />
+        <origin xyz = "-0.15 -0.118 0.0" rpy = "${pi/2} 0 0" />
         <axis xyz = "0 0 -1" />
         <dynamics damping="0.05" friction="0.01"/>
     </joint>
@@ -230,8 +232,8 @@
 
     <gazebo reference="leftiii_wheel">
         <material>Gazebo/Green</material>
-        <mu1>1</mu1>
-        <mu2>1</mu2>
+        <mu1>0.001</mu1>
+        <mu2>0.001</mu2>
         <kp>1000000</kp>
         <kd>0.1</kd>
         <selfCollide>true</selfCollide>
@@ -239,8 +241,8 @@
 
     <gazebo reference="rightiii_wheel">
         <material>Gazebo/Green</material>
-        <mu1>1</mu1>
-        <mu2>1</mu2>
+        <mu1>0.001</mu1>
+        <mu2>0.001</mu2>
         <kp>1000000</kp>
         <kd>0.1</kd>
         <selfCollide>true</selfCollide>
