@@ -85,14 +85,20 @@
         <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_cylinder>
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <mass value="0.01" />
+            <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
+        </inertial>
     </link>
 
 
     <link name="art_w_left">
       <inertial>
         <origin rpy="0 0 0" xyz="0 0 0" />
-        <mass value="1" />
-        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        <mass value="0.01" />
+        <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
       </inertial>
     </link>
 
@@ -115,6 +121,12 @@
         <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_cylinder>
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <mass value="0.01" />
+            <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
+        </inertial>
     </link>
 
 
@@ -122,8 +134,8 @@
     <link name="art_w_right">
       <inertial>
         <origin rpy="0 0 0" xyz="0 0 0" />
-        <mass value="1" />
-        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        <mass value="0.01" />
+        <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
       </inertial>
     </link>
 
@@ -143,6 +155,12 @@
         <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_cylinder>
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <mass value="0.01" />
+            <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
+        </inertial>
     </link>
 
 
@@ -163,11 +181,16 @@
         <xacro:inertial_cylinder mass = "0.1" radius = "0.033" length = "0.026" >
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_cylinder>
+
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <mass value="0.01" />
+            <inertia ixx="10" ixy="0.0" ixz="0.0" iyy="10" iyz="0.0" izz="10" />
+        </inertial>
     </link>
 
 
 
-   
 
 <!-- //////////////////////////////// ACKERMANN STEERING JOINTS //////////////////////////////////// -->   
 
